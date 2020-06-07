@@ -7,7 +7,7 @@ webcam = cv2.VideoCapture (0)
 counter = 1
 pathFormat = '../WebcamImages/IMG_{0}.jpg'
 
-while counter <= 20:
+while counter <= 100:
     x, frame = webcam.read()
 
     path = pathFormat.format (counter)
