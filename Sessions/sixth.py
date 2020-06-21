@@ -12,9 +12,6 @@ cv2.imshow ('OG', imgGrey)
 cv2.namedWindow ('adaptive mean', cv2.WINDOW_NORMAL)
 cv2.namedWindow ('global mean', cv2.WINDOW_NORMAL)
 
-img = cv2.imread ('../Images/sheep.jpg')
-imgGrey = cv2.cvtColor (img, cv2.COLOR_BGR2GRAY)
-
 ret, globalThresh = cv2.threshold (imgGrey, 15, 255, cv2.THRESH_BINARY)
 adaptive = cv2.adaptiveThreshold (imgGrey, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 25, 2)
 gaussian = cv2.adaptiveThreshold (imgGrey, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 25, 2)
@@ -98,8 +95,8 @@ kernel = np.ones ((3, 3))
 eroded = cv2.erode (imgGrey, kernel)
 dilate = cv2.dilate (imgGrey, kernel)
 
-opening = cv2.morphologyEx (imgGrey, cv2.MORPH_OPEN, kernel)
-closing = cv2.morphologyEx (imgGrey, cv2.MORPH_CLOSE, kernel)
+opening = cv2.morphologyEx (imgGrey, cv2.MORPH_OPEN, kernel)            # erosion -> dilation
+closing = cv2.morphologyEx (imgGrey, cv2.MORPH_CLOSE, kernel)           # dilation -> erosion
 
 # cv2.imshow ('erosion', eroded)
 # cv2.imshow ('dilation', dilate)
