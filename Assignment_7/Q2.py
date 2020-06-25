@@ -1,13 +1,13 @@
 import cv2
 import numpy as np
 
-img = cv2.imread ('../Images/some-paper-2.jpg')
+img = cv2.imread ('../Images/some-paper-3.jpg')
 imgGrey = cv2.cvtColor (img, cv2.COLOR_BGR2GRAY)
 
 cv2.namedWindow ('OG', cv2.WINDOW_NORMAL)
-# cv2.namedWindow ('processed', cv2.WINDOW_NORMAL)
-# cv2.namedWindow ('dilate', cv2.WINDOW_NORMAL)
-# cv2.namedWindow ('threshold', cv2.WINDOW_NORMAL)
+cv2.namedWindow ('processed', cv2.WINDOW_NORMAL)
+cv2.namedWindow ('dilate', cv2.WINDOW_NORMAL)
+cv2.namedWindow ('threshold', cv2.WINDOW_NORMAL)
 cv2.namedWindow ('cropped', cv2.WINDOW_NORMAL)
 
 kernel = np.ones ((13, 13))
@@ -47,9 +47,9 @@ cv2.drawContours (img, contours, maxIndex, (0, 255, 0), 1)
 cv2.drawContours (img, points, -1, (0, 0, 255), 3)
 
 cv2.imshow ('OG', img)
-# cv2.imshow ('threshold', thresh)
-# cv2.imshow ('dilate', dilate)
-# cv2.imshow ('processed', canny)
+cv2.imshow ('threshold', thresh)
+cv2.imshow ('dilate', dilate)
+cv2.imshow ('processed', canny)
 cv2.imshow ('cropped', warped)
 
 cv2.waitKey (0)
