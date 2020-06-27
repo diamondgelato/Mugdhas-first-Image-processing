@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-img = cv2.imread ('../Images/some-paper-3.jpg')
+img = cv2.imread ('../Images/some-paper-4.jpg')
 imgGrey = cv2.cvtColor (img, cv2.COLOR_BGR2GRAY)
 
 cv2.namedWindow ('OG', cv2.WINDOW_NORMAL)

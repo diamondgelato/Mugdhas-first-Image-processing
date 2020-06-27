@@ -24,6 +24,7 @@ def openImage():
 def autoCrop():
     global img
     global cropped
+    copy = np.copy (img)
 
     imgGrey = cv2.cvtColor (img, cv2.COLOR_BGR2GRAY)
     kernel = np.ones ((13, 13))
@@ -45,7 +46,7 @@ def autoCrop():
     # get those points
 
     peri = cv2.arcLength (maxContour, True)
-    points = cv2.approxPolyDP (maxContour, 0.01*peri, True)
+    points = cv2.approxPolyDP (maxContour, 0.03*peri, True)
 
     # warp those points
 
@@ -58,15 +59,17 @@ def autoCrop():
         minDiff = np.argmin (diffList)
         maxDiff = np.argmax (diffList)
 
-        sorted = np.array ([points[minSum, 0], points[minDiff, 0], points[maxDiff, 0], points[maxSum, 0]], dtype = np.float32)
+        sorted = np.array ([points[minSum, 0], points[maxDiff, 0], points[minDiff, 0], points[maxSum, 0]], dtype = np.float32)
 
         warpedPoints = np.array ([(0, 0), (1500, 0), (0, 2000), (1500, 2000)], dtype = np.float32)
 
         perspective = cv2.getPerspectiveTransform (sorted, warpedPoints)
         warped = cv2.warpPerspective (img, perspective, (1500, 2000))
 
-        cv2.drawContours (img, contours, maxIndex, (0, 255, 0), 1)
-        cv2.drawContours (img, [points], -1, (0, 0, 255), 3)
+        cv2.drawContours (copy, contours, maxIndex, (0, 255, 0), 1)
+        cv2.drawContours (copy, [points], -1, (0, 0, 255), 3)
+        cv2.namedWindow ('copy', cv2.WINDOW_NORMAL)
+        cv2.imshow ('copy', copy)
 
         global display
 
@@ -76,6 +79,8 @@ def autoCrop():
 
 
 def manualCrop():
+    textFound = 'Click the points of the cropped picture in the following order\n\nTop Left\nTop Right\nBottom Left\nBottom Right'
+    text.insert ('1.0', textFound)
     cv2.setMouseCallback ('OG', onClick)
 
 
@@ -122,11 +127,17 @@ def warpImage ():
 
 def getText ():
     global cropped
+    global img
     global text
 
-    croppedGrey = cv2.cvtColor (cropped, cv2.COLOR_BGR2GRAY)
+    if cropped.size > 1:
+        croppedGrey = cv2.cvtColor (cropped, cv2.COLOR_BGR2GRAY)
+    else:
+        croppedGrey = cv2.cvtColor (img, cv2.COLOR_BGR2GRAY)
+
     thresh = cv2.adaptiveThreshold (croppedGrey, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 201, 35)
     textFound = pytesseract.image_to_string(img, lang = 'eng')
+    text.delete ('1.0', tk.END)
     text.insert ('1.0', textFound)
 
     global display
@@ -154,6 +165,7 @@ def showText ():
 def displayImage():
     global display
 
+    # print ('Yea hi! I displayed something')
     cv2.namedWindow ('other', cv2.WINDOW_NORMAL)
     cv2.imshow ('other', display)
 
