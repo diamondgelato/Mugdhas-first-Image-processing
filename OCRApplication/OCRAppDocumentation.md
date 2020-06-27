@@ -43,35 +43,35 @@ The App uses the Tesseract OCR APIs to detect the printed text from the picture 
 ##### Starting the Application
 Run the application using the command
 `python3 OCRApplication.py`
-![Start Screen](/Screens/StartScreen.jpg)
+![Start Screen](Mugdhas-first-Image-processing/OCRApplication/Screens/StartScreen.jpg)
 
 ##### Loading pictures in the Application
 Click on the 'Open Image' Button and follow the file dialog open an image of your choice.
-![Open Image File Dialog](/Screens/OpenImageFileDialog.jpg)
+![Open Image File Dialog](Mugdhas-first-Image-processing/OCRApplication/Screens/OpenImageFileDialog.jpg)
  
-![Open Image Working](/Screens/OpenImageWorking.jpg)
+![Open Image Working](Mugdhas-first-Image-processing/OCRApplication/Screens/OpenImageWorking.jpg)
 
 ##### Automatically cropping the picture
 If the picture being loaded contains a background which is not needed, it can be cropped out. 
 Click the 'Auto Crop' Button to let the App detect the page and crop it 
-![Auto Crop Complete](/Screens/AutoCrop.jpg)
+![Auto Crop Complete](Mugdhas-first-Image-processing/OCRApplication/Screens/AutoCrop.jpg)
 
 ##### Manually cropping the picture
 To manually crop the picture, click the manual crop button and directly click the four corners for the cropped image on the image loaded in the order mentioned in the text box. Each corner will be highlighted with a yellow dot after you click it
-![Manual Crop](/Screens/ManualCrop1.jpg)
+![Manual Crop](Mugdhas-first-Image-processing/OCRApplication/Screens/ManualCrop1.jpg)
 
 After all the four clicks are made, the cropped image will open in a new window.
-![Manual Crop Complete](/Screens/ManualCropComplete.jpg)
+![Manual Crop Complete](Mugdhas-first-Image-processing/OCRApplication/Screens/ManualCropComplete.jpg)
 
 ##### Getting the text from the picture
 To get the text from the picture, click the 'Detect Text' Button. It will display the text from the picture into the orange text box. The text can then be copied.
-![Detect Text](/Screens/DetectText.jpg)
+![Detect Text](Mugdhas-first-Image-processing/OCRApplication/Screens/DetectText.jpg)
 
 By clicking on the 'Show Text' Button, bounding boxes are drawn around the text which has been identified
-![Show Text](/Screens/ShowText.jpg)
+![Show Text](Mugdhas-first-Image-processing/OCRApplication/Screens/ShowText.jpg)
 
 ##### Additional Features
 The processed image which is displayed can be saved to your system by clicking the 'Save Image' Button. Clicking this open a dialog box allowing you to save the file at the desired location.
-![Save Image](/Screens/SaveImage.jpg)
+![Save Image](Mugdhas-first-Image-processing/OCRApplication/Screens/SaveImage.jpg)
 
 All the image can be closed by clicking the 'Close Windows' Button. 
